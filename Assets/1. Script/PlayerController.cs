@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         if (0.0f < a_Timer)
         {
             a_Timer -= Time.deltaTime;
-            rig.AddForce(new Vector2(-15.0f, 0.1f), ForceMode2D.Impulse);
+            rig.AddForce(new Vector3(-15.0f, 0.0f, 0.0f), ForceMode2D.Impulse);
         }
 
     }
@@ -154,6 +154,13 @@ public class PlayerController : MonoBehaviour
         {
             itemCount++;
             Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.tag == "Monster")
+        {
+            Debug.Log("몬스터 충돌");
+            animator.SetTrigger("Hit");
+            a_Timer = 0.1f;
         }
     }
 }
