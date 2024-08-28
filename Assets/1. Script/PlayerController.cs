@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +10,10 @@ public class PlayerController : MonoBehaviour
     private Camera camera;
     private Rigidbody2D rig;
     private SpriteRenderer sr;
+
+    public List<Transform> responPoints = new List<Transform>();
+
+    Transform respawnPoint;
 
     public float speed =3.0f;
     public float sprintSpeed = 5.0f;
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         originPos = transform.position;
+        respawnPoint = responPoints[0];
     }
 
     private void Move()
@@ -162,5 +166,27 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Hit");
             a_Timer = 0.1f;
         }
+
+        switch (other.gameObject.name)
+        {
+            //case "StartPoint":
+            //    if (responPoints.IndexOf(respawnPoint) < 1)
+            //    {
+            //        respawnPoint = responPoints[0];
+            //    }
+            //    break;
+
+            case "Trap":
+                {
+                    respawnPoint = responPoints[0];
+                    transform.position = respawnPoint.position;
+                }
+                break;
+        }
+
+            
+
+
+            
     }
 }

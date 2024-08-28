@@ -8,6 +8,8 @@ TagManager:
   - Spike
   - Item
   - Monster
+  - StartPoint
+  - Trap
   layers:
   - Default
   - TransparentFX
