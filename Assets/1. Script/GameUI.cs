@@ -21,7 +21,8 @@ public class GameUI : MonoBehaviour
 
     void ItemCountToText()
     {
-       itemCount.text = PlayerController.Instance.itemCount.ToString();
+        //itemCount.text = PlayerController.Instance.itemCount.ToString();
+        itemCount.text = NewPlayerCtrl.Instance.itemCount.ToString();
     }
 
     private void OnDestroy()
